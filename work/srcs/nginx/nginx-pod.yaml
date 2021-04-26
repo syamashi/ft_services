@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:                      # Pod config
+  containers:
+  - name: nginx
+    image: mynginx
+    imagePullPolicy: Never
+    livenessProbe:
+      httpGet:
+        port: 80
+        path: /
+      failureThreshold: 5
+      periodSeconds: 5

@@ -1,17 +1,17 @@
 # https://qiita.com/rspepe/items/c0c0119032ccc79ff7a1
 
-FROM alpine
-
-RUN apk update &&\
-	apk add nginx openssl wget curl &&\
-	rm -rf /var/cache/apk/*
+FROM basecamp
 
 # doc root
+RUN mkdir -p app
+
 COPY app /app
 COPY default.conf /etc/nginx/conf.d/default.conf
+COPY start.sh /tmp/start.sh
+
+RUN	chmod -R 755 /app /tmp /etc
 
 # port
-EXPOSE 80 443
+EXPOSE 80 443 22
 
-RUN mkdir -p /run/nginx
-ENTRYPOINT [ "tail", "-f", "/dev/null"]
+CMD [ "/tmp/start.sh" ]
