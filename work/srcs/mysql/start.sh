@@ -10,7 +10,7 @@ if [ ! -d "/run/mysqld" ]; then
   mkdir -p /run/mysqld
 fi
 
-if [ -d /app/mysql ]; then
+if [ -d "/app/mysql" ]; then
   echo "[i] MySQL directory already present, skipping creation"
 else
   echo "[i] MySQL data directory not found, creating initial DBs"
@@ -54,8 +54,9 @@ EOF
     fi
   fi
 
+# verbose=0: logを出さない
   /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
   rm -f $tfile
 fi
-
-exec /usr/bin/mysqld --user=root --console
+# console: (Windows のみ。)このオプションが使用されている場合、エラーログメッセージを stderr に書き込み、stdout. mysqld はコンソールウィンドウを閉じません。
+exec /usr/bin/mysqld --user=root 

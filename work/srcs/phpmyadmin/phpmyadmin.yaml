@@ -1,42 +1,39 @@
+# https://kubernetes.io/ja/docs/concepts/workloads/controllers/deployment/
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin
   labels:
-    app: phpmyadmin
-spec:
+    app: phpmyadmin # このラベルは全部のpodにつけられる
+  name: phpmyadmin  # deploymentの名前
+spec:  # podの概要
   replicas: 1
   selector:
     matchLabels:
       app: phpmyadmin
-#  strategy:
-#    rollingUpdate:
-#      maxSurge: 25%
-#      maxUnavailable: 25%
-#    type: RollingUpdate
-  template:
+  template: # podのtemplate
     metadata:
       labels:
-        app: phpmyadmin
+        app: phpmyadmin # metadata.labels.appと合わせたほうがいいかも
     spec:
       containers:
-#       - image: phpmyadmin
       - image: mypma
         imagePullPolicy: Never
         name: phpmyadmin
+#        ports:
+#        - containerPort: 5000 # PodのIPからExposeするポート番号を指定 =  --portオプションで指定したコンテナの公開しているポート
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: phpmyadmin
-  name: phpmyadmin
-#  annotations:
-#    metallb.universe.tf/address-pool: default
+  name: phpmyadmin # これがURLのpathになるかも。サービス名
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "ft_services"
 spec:
+  type: LoadBalancer
+  selector: # DeploymentのPodのlabelとセット
+    app: phpmyadmin
   ports:
-  - name: phpmyadmin
-    port: 5000
-    protocol: TCP
-    targetPort: 5000
+    - name: phpmyadmin
+      port: 5000 #     targetPort: 5000 # targetPort : Serviceで転送する先のポートを指定する。またはPod内で定義されているNamedPortを指定する。指定されなかった場合、 port で指定されたポートを利用する。

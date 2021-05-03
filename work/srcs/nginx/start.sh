@@ -1,5 +1,5 @@
 #!/bin/sh
 
 nginx
-echo "mynginx start\n"
-tail -f /dev/null
+echo "mynginx start"
+tail -f /var/log/nginx/access.log

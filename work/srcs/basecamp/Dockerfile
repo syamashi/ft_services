@@ -4,8 +4,8 @@ FROM alpine
 
 RUN apk update &&\
 	apk add nginx openssl wget curl &&\
+	mkdir -p /run/nginx &&\
 	rm -rf /var/cache/apk/*
-
 # SSL[.crt]を作る
 # https://linuxize.com/post/creating-a-self-signed-ssl-certificate/
 # .key:秘密鍵
@@ -16,5 +16,7 @@ RUN mkdir /etc/nginx/ssl
 WORKDIR /etc/nginx/ssl/
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out ft_service.crt -keyout ft_service.key \
 	-subj "/C=JP/ST=Tokyo/L=hoge/O=fuga/OU=foo/CN=localhost"
+
+WORKDIR /
 
 RUN	chmod -R 755 /tmp /etc

@@ -1,0 +1,61 @@
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         10.0.2.15:8443
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              mysql
+Namespace:         default
+Labels:            <none>
+Annotations:       Selector:  app=mysql
+Type:              ClusterIP
+IP:                None
+Port:              <unset>  3306/TCP
+TargetPort:        3306/TCP
+Endpoints:         172.17.0.5:3306
+Session Affinity:  None
+Events:            <none>
+
+
+Name:                     nginx-metallb
+Namespace:                default
+Labels:                   <none>
+Annotations:              Selector:  app=nginx-metallb
+Type:                     LoadBalancer
+IP:                       10.101.113.194
+LoadBalancer Ingress:     192.168.10.10
+Port:                     http  80/TCP
+TargetPort:               80/TCP
+NodePort:                 http  41161/TCP
+Endpoints:                172.17.0.4:80
+Port:                     https  443/TCP
+TargetPort:               443/TCP
+NodePort:                 https  43586/TCP
+Endpoints:                172.17.0.4:443
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:                     phpmyadmin
+Namespace:                default
+Labels:                   <none>
+Annotations:              Selector:  app=phpmyadmin
+Type:                     NodePort
+IP:                       10.104.222.226
+Port:                     phpmyadmin  5000/TCP
+TargetPort:               5000/TCP
+NodePort:                 phpmyadmin  5000/TCP
+Endpoints:                172.17.0.6:5000
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>

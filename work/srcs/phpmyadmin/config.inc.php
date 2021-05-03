@@ -23,10 +23,10 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
  */
 
 /* User used to manipulate with storage */
-//$cfg['Servers'][$i]['controlhost'] = '';
+// $cfg['Servers'][$i]['controlhost'] = '';
 $cfg['Servers'][$i]['port'] = '3306';
-$cfg['Servers'][$i]['controluser'] = 'root';
-$cfg['Servers'][$i]['controlpass'] = 'root';
+$cfg['Servers'][$i]['controluser'] = 'user42';
+$cfg['Servers'][$i]['controlpass'] = 'user42';
 
 /**
  * Directories for saving/loading files from server
