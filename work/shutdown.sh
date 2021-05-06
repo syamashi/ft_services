@@ -5,9 +5,16 @@ kubectl delete -f srcs/nginx/nginx.yaml
 kubectl delete -f srcs/mysql/mysql-deployment.yaml
 kubectl delete -f srcs/mysql/mysql-pv.yaml
 kubectl delete -f srcs/phpmyadmin/phpmyadmin.yaml
+kubectl delete -f srcs/wordpress/wordpress.yaml
 
 docker ps -aq | xargs docker stop
 docker ps -aq | xargs docker rm
 docker images -aq | xargs docker rmi
 
-#minikube delete
+minikube delete
+
+#なんかimageのこってる
+docker images -aq | xargs docker rmi
+
+# https://qiita.com/Ikumi/items/b319a12d7e2c9f7b904d
+docker volume rm $(docker volume ls -qf dangling=true)

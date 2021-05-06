@@ -35,5 +35,5 @@ spec:
   selector: # DeploymentのPodのlabelとセット
     app: phpmyadmin
   ports:
-    - name: phpmyadmin
+    - name: phpmyadmin #
       port: 5000 #     targetPort: 5000 # targetPort : Serviceで転送する先のポートを指定する。またはPod内で定義されているNamedPortを指定する。指定されなかった場合、 port で指定されたポートを利用する。

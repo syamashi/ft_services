@@ -15,7 +15,7 @@ if [ -d "/app/mysql" ]; then
 else
   echo "[i] MySQL data directory not found, creating initial DBs"
   
-  mysql_install_db --datadir=/app/mysql --user=root > /dev/null
+  mysql_install_db --user=root > /dev/null
 
   if [ "$MYSQL_ROOT_PASSWORD" = "" ]; then
     MYSQL_ROOT_PASSWORD=root

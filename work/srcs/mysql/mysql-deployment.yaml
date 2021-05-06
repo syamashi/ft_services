@@ -28,7 +28,7 @@ spec:
           name: mysql
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+          mountPath: /app
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
@@ -38,7 +38,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql # wp-config.phpの名前解決で使われる
 spec:
   ports:
   - port: 3306

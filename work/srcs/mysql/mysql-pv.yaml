@@ -1,3 +1,5 @@
+# https://github.com/kubernetes/minikube/blob/master/docs/persistent_volumes.md
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -7,12 +9,15 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 1Gi
+    storage: 100Mi
   accessModes:
     - ReadWriteOnce
+# hostpath use only test single node. https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#hostpathpersistentvolume
+# minikube内の保存先？
   hostPath:
-    path: "/mnt/data"
+    path: "/data"
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -23,4 +28,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 100Mi
