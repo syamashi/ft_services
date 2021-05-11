@@ -3,14 +3,11 @@
 
 FROM basecamp
 
-WORKDIR /
 COPY start.sh /tmp/start.sh
 
 # doc root
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY config.inc.php /var/www/phpmyadmin
-# for debug
-COPY info.php /var/www/phpmyadmin
 
 # php config (ps aux)
 # 12 nobody    0:00 {php-fpm7} php-fpm: pool www

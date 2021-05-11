@@ -1,5 +1,3 @@
-# https://qiita.com/rspepe/items/c0c0119032ccc79ff7a1
-
 FROM basecamp
 
 # copy wp-config.php

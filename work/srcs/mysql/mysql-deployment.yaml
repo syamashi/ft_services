@@ -8,8 +8,8 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  strategy:
-    type: Recreate
+  strategy: 
+    type: Recreate # .spec.strategy.type==Recreateと指定されているとき、既存の全てのPodは新しいPodが作成される前に削除されます。
   template:
     metadata:
       labels:

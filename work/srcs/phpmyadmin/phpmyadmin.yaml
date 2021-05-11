@@ -20,8 +20,8 @@ spec:  # podの概要
       - image: mypma
         imagePullPolicy: Never
         name: phpmyadmin
-#        ports:
-#        - containerPort: 5000 # PodのIPからExposeするポート番号を指定 =  --portオプションで指定したコンテナの公開しているポート
+        ports:
+        - containerPort: 5000 # コンテナに外部からアクセスするポート。Exposeと同じポート。ここは無しでもいけるかも
 
 ---
 apiVersion: v1
