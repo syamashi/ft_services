@@ -20,6 +20,10 @@ spec:  # podの概要
       - image: mypma
         imagePullPolicy: Never
         name: phpmyadmin
+        livenessProbe:
+          exec:
+            command: ["sh", "./livenessprove.sh"]
+          initialDelaySeconds: 20 # コンテナ起動してから確認を開始するまで
         ports:
         - containerPort: 5000 # コンテナに外部からアクセスするポート。Exposeと同じポート。ここは無しでもいけるかも
 

@@ -1,5 +1,6 @@
 #!/bin/sh
 
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+# telegraf run in the background
+telegraf -config /etc/telegraf.conf &
 
-tail -f /var/log/vsftpd.log
+/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf

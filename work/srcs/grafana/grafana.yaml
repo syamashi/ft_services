@@ -4,41 +4,40 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx # このラベルは全部のpodにつけられる
-  name: nginx  # deploymentの名前
+    app: grafana # このラベルは全部のpodにつけられる
+  name: grafana  # deploymentの名前
 spec:  # podの概要
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: grafana
   template: # podのtemplate
     metadata:
       labels:
-        app: nginx # metadata.labels.appと合わせたほうがいいかも
+        app: grafana # metadata.labels.appと合わせたほうがいいかも
     spec:
       containers:
-      - image: mynginx
+      - image: mygrafana
         imagePullPolicy: Never
-        name: nginx
+        name: grafana
         livenessProbe:
           exec:
             command: ["sh", "./livenessprove.sh"]
           initialDelaySeconds: 20 # コンテナ起動してから確認を開始するまで
         ports:
-        - containerPort: 80
+        - containerPort: 3000 # コンテナに外部からアクセスするポート。Exposeと同じポート。ここは無しでもいけるかも
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: grafana # これがURLのpathになるかも。サービス名
   annotations:
     metallb.universe.tf/allow-shared-ip: "ft_services"
 spec:
   type: LoadBalancer
   selector: # DeploymentのPodのlabelとセット
-    app: nginx
+    app: grafana
   ports:
-    - name: http
-      port: 80
-    - name: https
-      port: 443
+    - name: grafana
+      port: 3000

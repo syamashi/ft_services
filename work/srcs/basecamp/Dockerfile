@@ -11,7 +11,10 @@ RUN set -ex; \
 	apk add php7-phar php7-fpm php7-common php7-session php7-iconv php7-json php7-gd php7-curl php7-xml php7-mysqli php7-imap php7-cgi fcgi php7-pdo php7-pdo_mysql php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom; \
 	# openrc: rc-service   mandoc+man-pages: man
 	apk add openrc mandoc man-pages; \
-	apk add vsftpd
+	apk add vsftpd; \
+	# grafana-server
+	apk add libc6-compat; \
+	apk add influxdb telegraf
 
 # SSL[.crt]を作る
 # https://linuxize.com/post/creating-a-self-signed-ssl-certificate/
@@ -45,6 +48,15 @@ RUN set -ex; \
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
 	chmod +x wp-cli.phar; \
 	mv wp-cli.phar /usr/local/bin/wp
+
+# grafana
+# ref: https://zenn.dev/tkomatsu/scraps/42e6cd3f96f4e5
+RUN set -ex; \
+	wget https://dl.grafana.com/oss/release/grafana-7.4.5.linux-amd64.tar.gz; \
+	tar -zxvf grafana-7.4.5.linux-amd64.tar.gz; \
+	rm grafana-7.4.5.linux-amd64.tar.gz; \
+	mv grafana-7.4.5 grafana; \
+	mv grafana/ /
 
 RUN	chmod -R 755 /tmp /etc
 

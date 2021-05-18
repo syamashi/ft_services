@@ -5,6 +5,8 @@ COPY wp-config.php /var/www/wordpress/
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY www.conf /etc/php7/php-fpm.d
 COPY start.sh /tmp/start.sh
+COPY telegraf.conf /etc/telegraf.conf
+COPY livenessprove.sh /livenessprove.sh
 
 #  Permission denied in /var/www/wordpress/wp-load.php 
 RUN	chmod -R 755 /var /tmp /etc

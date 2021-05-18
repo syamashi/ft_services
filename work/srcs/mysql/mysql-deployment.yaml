@@ -8,8 +8,8 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  strategy: 
-    type: Recreate # .spec.strategy.type==Recreateと指定されているとき、既存の全てのPodは新しいPodが作成される前に削除されます。
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -19,6 +19,10 @@ spec:
       - image: mymysql
         imagePullPolicy: Never
         name: mysql
+        livenessProbe:
+          exec:
+            command: ["sh", "./livenessprove.sh"]
+          initialDelaySeconds: 20 # コンテナ起動してから確認を開始するまで
         env:
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD

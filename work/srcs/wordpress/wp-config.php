@@ -2,7 +2,7 @@
 define( 'DB_NAME', 'services' );
 define( 'DB_USER', 'user42' );
 define( 'DB_PASSWORD', 'user42' );
-/** MySQL hostname */  # 名前解決。mysql.yamlのserviceのname。podのIP=192.168.10.10が入る。
+/** MySQL hostname */  # 名前解決。mysql.yamlのserviceのname。CLSUTER-IPだと思う。EXTERNAL-IPじゃないよね
 define( 'DB_HOST', 'mysql' );
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );

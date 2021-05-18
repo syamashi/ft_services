@@ -13,6 +13,9 @@ COPY config.inc.php /var/www/phpmyadmin
 # 12 nobody    0:00 {php-fpm7} php-fpm: pool www
 # -> nginx     0:00 {php-fpm7} php-fpm: pool www
 COPY www.conf /etc/php7/php-fpm.d
+COPY telegraf.conf /etc/telegraf.conf
+COPY telegraf.conf /etc/telegraf.conf
+COPY livenessprove.sh /livenessprove.sh
 
 # etcはサーバー系が全部入ってるから755微妙
 RUN	chmod -R 755 /var /etc /tmp

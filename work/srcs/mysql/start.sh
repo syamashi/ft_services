@@ -60,5 +60,9 @@ EOF
   /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
   rm -f $tfile
 fi
+
+# telegraf run in the background
+telegraf -config /etc/telegraf.conf &
+
 # console: (Windows のみ。)このオプションが使用されている場合、エラーログメッセージを stderr に書き込み、stdout. mysqld はコンソールウィンドウを閉じません。
-exec /usr/bin/mysqld --user=root 
+exec /usr/bin/mysqld --user=root

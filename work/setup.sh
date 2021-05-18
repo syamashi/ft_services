@@ -9,6 +9,8 @@
 sudo sysctl fs.protected_regular=0
 sudo minikube start --vm-driver=none --extra-config=apiserver.service-node-port-range=1-65535
 sudo chown -R $USER $HOME/.minikube; chmod -R 755 $HOME/.minikube
+# for ftps-pv make
+sudo chown -R $USER /data; chmod -R 755 /data
 
 # --vm-driver=dockerの場合は、imageの展開先がローカルじゃなくなって、docker imagesで表示されなくなる。 evalをすると、ローカルに展開されるようになる。
 # eval $(minikube docker-env)

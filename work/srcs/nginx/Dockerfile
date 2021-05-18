@@ -7,7 +7,9 @@ RUN mkdir -p app
 
 COPY app /app
 COPY default.conf /etc/nginx/conf.d/default.conf
-COPY start.sh /tmp/start.sh
+COPY start.sh /start.sh
+COPY telegraf.conf /etc/telegraf.conf
+COPY livenessprove.sh /livenessprove.sh
 
 RUN	chmod -R 755 /app /tmp /etc
 #access logへの書き込み権限を与えないと、環境変数が出力されない
@@ -16,4 +18,4 @@ RUN chown -R nginx:nginx /etc/nginx
 # port
 EXPOSE 80 443 22
 
-CMD [ "/tmp/start.sh" ]
+CMD [ "/start.sh" ]
