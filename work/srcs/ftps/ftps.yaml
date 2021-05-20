@@ -18,6 +18,12 @@ spec: # podの概要
       - image: myftps
         imagePullPolicy: Never
         name: ftps
+        livenessProbe:
+          exec:
+            command: ["sh", "./livenessprobe.sh"]
+          initialDelaySeconds: 30 # コンテナ起動してから確認を開始するまで
+          timeoutSeconds: 10
+          periodSeconds: 30
         ports:
         - containerPort: 20
           name: ftps-datapath

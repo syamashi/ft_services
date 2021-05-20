@@ -20,7 +20,7 @@ COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 # COPY ftp-user /etc/vsftpd/user_conf/ftp-user
 COPY chroot_list /etc/vsftpd/chroot_list
 COPY telegraf.conf /etc/telegraf.conf
-COPY livenessprove.sh /livenessprove.sh
+COPY livenessprobe.sh /livenessprobe.sh
 
 RUN chmod -R 777 /tmp /var /etc
 

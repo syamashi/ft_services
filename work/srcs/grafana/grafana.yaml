@@ -22,7 +22,7 @@ spec:  # podの概要
         name: grafana
         livenessProbe:
           exec:
-            command: ["sh", "./livenessprove.sh"]
+            command: ["sh", "./livenessprobe.sh"]
           initialDelaySeconds: 20 # コンテナ起動してから確認を開始するまで
         ports:
         - containerPort: 3000 # コンテナに外部からアクセスするポート。Exposeと同じポート。ここは無しでもいけるかも

@@ -7,7 +7,7 @@ FROM basecamp
 COPY start.sh /start.sh
 COPY mariadb-server.cnf /etc/my.cnf.d
 COPY telegraf.conf /etc/telegraf.conf
-COPY livenessprove.sh /livenessprove.sh
+COPY livenessprobe.sh /livenessprobe.sh
 
 EXPOSE 3306
 CMD ["/start.sh"]

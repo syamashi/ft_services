@@ -5,6 +5,9 @@
 # bash commands
 # https://qiita.com/wakayama-y/items/a9b7380263da77e51711
 
+# telegraf run in the background
+telegraf -config /etc/telegraf.conf &
+
 # -d = is directory?
 if [ ! -d "/run/mysqld" ]; then
   mkdir -p /run/mysqld
@@ -61,8 +64,6 @@ EOF
   rm -f $tfile
 fi
 
-# telegraf run in the background
-telegraf -config /etc/telegraf.conf &
-
 # console: (Windows のみ。)このオプションが使用されている場合、エラーログメッセージを stderr に書き込み、stdout. mysqld はコンソールウィンドウを閉じません。
-exec /usr/bin/mysqld --user=root
+# exec 外部プロセスで実行。 pkillしても残ってしまう
+/usr/bin/mysqld --user=root

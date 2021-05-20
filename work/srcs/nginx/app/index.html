@@ -17,8 +17,6 @@
 		<p>link to redirection</p>
         <li><a href="https://192.168.10.10/wordpress">https://192.168.10.10/wordpress</a></li>
 		<p>login url</p>
-        <li><a href="https://192.168.10.10/wordpress/wp-login">https://192.168.10.10/wordpress/wp-login</a></li>
-		<p>login url2</p>
         <li><a href="https://192.168.10.10:5050/wp-login.php">https://192.168.10.10:5050/wp-login.php</a></li>
 		<p>[admin] syamashi / syamashi</p>
 		<p>[subscriber] user01 / user01</p>
@@ -32,11 +30,16 @@
         <li><a href="https://192.168.10.10:5000">https://192.168.10.10:5000</a></li>
 		<p>link to reverse-proxy</p>
         <li><a href="https://192.168.10.10/phpmyadmin">https://192.168.10.10/phpmyadmin</a></li>
+		<p>[admin] user42 / user42</p>
     </ul>
     <h2>Grafana</h2>
     <ul>
         <li><a href="https://192.168.10.10:3000">https://192.168.10.10:3000</a></li>
 		<p>[admin] admin / admin</p>
+    </ul>
+    <h2>ftps</h2>
+    <ul>
+		<p>[command] lftp -e 'set ssl:verify-certificate false' -u ftp-user -p 21 192.168.10.10</p>
     </ul>
 </body>
 </html>

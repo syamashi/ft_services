@@ -20,11 +20,12 @@ spec:  # podの概要
         name: wordpress
         livenessProbe:
           exec:
-            command: ["sh", "./livenessprove.sh"]
-          initialDelaySeconds: 20 # コンテナ起動してから確認を開始するまで
+            command: ["sh", "./livenessprobe.sh"]
+          initialDelaySeconds: 30 # コンテナ起動してから確認を開始するまで
+          timeoutSeconds: 10
+          periodSeconds: 30
         ports:
         - containerPort: 5050 # コンテナに外部からアクセスするポート。Exposeと同じポート。ここは無しでもいけるかも
-
 ---
 apiVersion: v1
 kind: Service
