@@ -1,4 +1,0 @@
-FROM alpine
-
-# RUN apk add openrc
-# ENTRYPOINT ["tail", "-f", "/dev/null"]

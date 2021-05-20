@@ -1,2 +1,0 @@
-deploymentからpodを起動できるようにする
-nginx, phpmyadmin, wordpressなどなど
