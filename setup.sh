@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# [must!] local setup
+# https://pastebin.com/4HnnSUpe?
+
 #デフォルトではVirtualBoxのVMを作成してその上にkubernetes環境が構築される。
 #--vm-driver=none オプションを付けることで、minikubeを実行しているホスト上にkubernetesを構築されるようにできる。
 
@@ -8,7 +11,9 @@
 
 sudo sysctl fs.protected_regular=0
 sudo minikube start --vm-driver=none --extra-config=apiserver.service-node-port-range=1-65535
-sudo chown -R $USER $HOME/.minikube; chmod -R 755 $HOME/.minikube
+sudo chown -R $USER:$USER $HOME/.minikube; chmod -R 755 $HOME/.minikube
+sudo chown -R $USER:$USER $HOME/.kube; chmod -R 755 $HOME/.kube
+sudo chmod -R 777 /var/run/docker.sock
 
 # for ftps-pv make
 # sudo chown -R $USER /data; chmod -R 755 /data
@@ -25,8 +30,9 @@ else
   echo "[run.sh] /data/ftp-user already exist."
 fi
 
-# lftp install
+# install
 sudo apt-get install lftp
+sudo apt install conntrack
 
 # stop services
 #kubectl delete -f srcs/metallb/metallb-config.yaml

@@ -7,7 +7,7 @@ RUN mkdir -p app
 
 COPY app /app
 COPY default.conf /etc/nginx/conf.d/default.conf
-COPY start.sh /start.sh
+COPY start.sh /tmp/start.sh
 COPY telegraf.conf /etc/telegraf.conf
 COPY livenessprobe.sh /livenessprobe.sh
 
@@ -18,4 +18,4 @@ RUN chown -R nginx:nginx /etc/nginx
 # port
 EXPOSE 80 443 22
 
-CMD [ "/start.sh" ]
+CMD [ "/tmp/start.sh" ]
