@@ -3,6 +3,19 @@
 # [must!] local setup
 # https://pastebin.com/4HnnSUpe?
 
+# install
+sudo apt-get install lftp
+sudo apt install conntrack
+
+# ftps pv
+if [ ! -d "/data/ftp-user" ]; then
+  sudo mkdir -p /data/ftp-user
+  sudo chmod 777 /data/ftp-user
+  echo "[run.sh] /data/ftp-user made."
+else
+  echo "[run.sh] /data/ftp-user already exist."
+fi
+
 #デフォルトではVirtualBoxのVMを作成してその上にkubernetes環境が構築される。
 #--vm-driver=none オプションを付けることで、minikubeを実行しているホスト上にkubernetesを構築されるようにできる。
 
@@ -15,24 +28,8 @@ sudo chown -R $USER:$USER $HOME/.minikube; chmod -R 755 $HOME/.minikube
 sudo chown -R $USER:$USER $HOME/.kube; chmod -R 755 $HOME/.kube
 sudo chmod -R 777 /var/run/docker.sock
 
-# for ftps-pv make
-# sudo chown -R $USER /data; chmod -R 755 /data
-
 # --vm-driver=dockerの場合は、imageの展開先がローカルじゃなくなって、docker imagesで表示されなくなる。 evalをすると、ローカルに展開されるようになる。
 # eval $(minikube docker-env)
-
-# ftps pv
-if [ ! -d "/data/ftp-user" ]; then
-  sudo mkdir -p /data/ftp-user
-  sudo chmod 777 /data/ftp-user
-  echo "[run.sh] /data/ftp-user made."
-else
-  echo "[run.sh] /data/ftp-user already exist."
-fi
-
-# install
-sudo apt-get install lftp
-sudo apt install conntrack
 
 # stop services
 #kubectl delete -f srcs/metallb/metallb-config.yaml
