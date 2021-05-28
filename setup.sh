@@ -8,9 +8,6 @@ sudo apt-get install lftp
 sudo apt install conntrack
 sudo dpkg -r --force-depends golang-docker-credential-helpers
 
-# docker build double free error?
-sudo dpkg -r --force-depends golang-docker-credential-helpers
-
 # ftps pv
 if [ ! -d "/data/ftp-user" ]; then
   sudo mkdir -p /data/ftp-user
