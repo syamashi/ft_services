@@ -8,6 +8,6 @@ COPY dashboards /grafana/conf/provisioning/dashboards
 COPY datasources /grafana/conf/provisioning/datasources
 COPY livenessprobe.sh /livenessprobe.sh
 
-RUN chmod 755 -R /grafana/conf /tmp
+RUN chmod -R 755 /grafana/conf /tmp
 EXPOSE 3000
 CMD ["/tmp/start.sh"]
