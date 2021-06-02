@@ -1,6 +1,6 @@
 # https://qiita.com/rspepe/items/c0c0119032ccc79ff7a1
 
-FROM alpine
+FROM alpine:3.13
 
 RUN set -ex; \
 	apk update; \
@@ -14,7 +14,8 @@ RUN set -ex; \
 	apk add vsftpd; \
 	# grafana-server
 	apk add libc6-compat; \
-	apk add influxdb telegraf
+	apk add influxdb; \
+	apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/v3.13/community
 
 # SSL[.crt]を作る
 # https://linuxize.com/post/creating-a-self-signed-ssl-certificate/
