@@ -8,7 +8,7 @@ local VM setting will change
 
 intalls and uninstall
 
-- vm--driver=none
+- --vm-driver=none 
 
 - sudo apt-get install lftp
 
