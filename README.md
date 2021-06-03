@@ -8,6 +8,8 @@ local VM setting will change
 
 intalls and uninstall
 
+- vm--driver=none
+
 - sudo apt-get install lftp
 
 - sudo apt install conntrack
