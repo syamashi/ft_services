@@ -16,7 +16,7 @@ intalls and uninstall
 
 - sudo dpkg -r --force-depends golang-docker-credential-helpers
 
-persistent volume will make "/data"
+- persistent volume will make "/data"
 
 # shutdown.sh
 
@@ -27,7 +27,5 @@ all docker containers and images will delete.
 - docker images -aq | xargs docker rmi
 
 - docker volume rm "$(docker volume ls -qf dangling=true)"
-
-/data will delete
 
 - sudo rm -rf /data
